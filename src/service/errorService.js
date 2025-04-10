@@ -39,7 +39,7 @@ export class ErrorService{
                 for (const e of errors.payload) {
                     try {
                         let response = await createEntity(e.json_data,  true);
-                        response = {status: 201}; // Simulate a successful response for testing
+                        //response = {status: 201}; // Simulate a successful response for testing
                         if (response.status === 201) {
                             const deleteResponse = await deleteEntity(e.id);
                             if (deleteResponse.status === 200) {
