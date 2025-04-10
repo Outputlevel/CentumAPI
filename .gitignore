@@ -1,0 +1,11 @@
+# macOS system file
+.DS_Store
+
+# Node.js dependencies
+node_modules/
+
+# Package lock file
+package-lock.json
+
+# Environment variables
+.env
