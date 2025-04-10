@@ -19,7 +19,7 @@ class OrderService {
             // Skip API call in dev mode
             if (debugMode === "true") return {status:201, debugMode, centumSchema}; 
             //const data = {status: 599}; // Simulate a response for testing
-            //const data = await this.centumDAO.createOrder(centumSchema);
+            const data = await this.centumDAO.createOrder(centumSchema);
             
             // Handle API failure
             if (data.status > 500 ) {

@@ -3,8 +3,9 @@ import customerRouter from "./endpoints/customer.js";
 import orderRouter from "./endpoints/order.js";
 import errorRouter from "./endpoints/errors.js";
 import {auth} from "./middleware/auth.js";
+import 'dotenv/config.js';
 
-process.loadEnvFile();
+//process.loadEnvFile();
 
 const app = express();
 
