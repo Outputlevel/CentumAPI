@@ -1,6 +1,5 @@
 import crypto from 'crypto';
 import { v4 as uuidv4 } from 'uuid';
-//import { keyGenerator } from "../auth/hashGen.js";
 
 export class HTTPWorker {
     constructor({ url, method = 'GET', body = null, extraHeaders = {} }) {

@@ -69,7 +69,7 @@ export class CustomerService{
             do {
                 // Only modify razonSocial if it's not the first attempt
                 if (attempt > 0) {
-                    centumSchema.RazonSocial = `${originalRazonSocial} ${attempt + 1}`;
+                    centumSchema.RazonSocial = `${originalRazonSocial} ${body.woo_customer_id}`;
                 }
                 //Create customer
                 response = await this.centumDAO.createCustomer(centumSchema);
