@@ -1,7 +1,5 @@
 import { HTTPWorker } from "../utils/httpWorker.js";
 
-process.loadEnvFile();
-
 const devMode = process.env.DEV_MODE || "true";
 
 const username = devMode === "true" ? process.env.WOO_USERNAME_DEV : process.env.WOO_USERNAME_PROD;

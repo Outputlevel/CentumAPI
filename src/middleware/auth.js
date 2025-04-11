@@ -1,5 +1,3 @@
-process.loadEnvFile();
-
 
 export const auth = async (req, res, next) => {
     try {

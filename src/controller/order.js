@@ -1,6 +1,5 @@
 import {OrderService} from '../service/orderService.js';
 import {OrderSchema} from '../schemas/orderSchema.js';
-process.loadEnvFile();
 
 const devMode = process.env.DEV_MODE || false;
 

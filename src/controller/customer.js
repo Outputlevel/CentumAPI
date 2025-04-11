@@ -1,8 +1,6 @@
 import { CustomerService } from '../service/customerService.js';
 import { CustomerSchema } from '../schemas/index.js';
 
-process.loadEnvFile();
-
 const debugMode = process.env.DEBUG_MODE || "true";
 
 class CustomerController {
