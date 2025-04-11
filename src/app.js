@@ -3,9 +3,21 @@ import customerRouter from "./endpoints/customer.js";
 import orderRouter from "./endpoints/order.js";
 import errorRouter from "./endpoints/errors.js";
 import {auth} from "./middleware/auth.js";
-import 'dotenv/config.js';
+import fs from 'fs';
+import path from 'path';
 
-//process.loadEnvFile();
+function ensureEnvFileExists(filename = '.env') {
+  const envPath = path.resolve(process.cwd(), filename);
+
+  if (!fs.existsSync(envPath)) {
+    fs.writeFileSync(envPath, '', { encoding: 'utf8' });
+    console.log(`${filename} file was missing, so it was created.`);
+  } else {
+    console.log(`${filename} file already exists.`);
+  }
+}
+ensureEnvFileExists(); // Ensure the .env file exists
+process.loadEnvFile();
 
 const app = express();
 
@@ -18,8 +30,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/customers", customerRouter);
 app.use("/api/orders", orderRouter);
 app.use("/api/errors", errorRouter);
-
-
 
 app.get("/", (req, res) => {
     res.status(403).send("Forbidden");

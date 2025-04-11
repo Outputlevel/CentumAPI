@@ -5,6 +5,6 @@ import { isCustomer } from "../middleware/index.js";
 const router = Router();
  const cc = new CustomerController();
 
-router.post("/",  isCustomer, cc.createCustomer);
+router.post("/", isCustomer, cc.createCustomer);
 
 export default router;
