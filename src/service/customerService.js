@@ -2,7 +2,6 @@ import {CentumDAO} from '../DAO/centumDAO.js';
 import {CustomerSchema} from '../schemas/index.js';
 import {ErrorService} from './index.js';
 
-process.loadEnvFile();
 const debugMode = process.env.DEBUG_MODE || false;
 export class CustomerService{
     constructor(){

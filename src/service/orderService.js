@@ -1,7 +1,6 @@
 import {CentumDAO} from '../DAO/centumDAO.js';
 import { ErrorService } from './index.js';
 import {OrderSchema} from '../schemas/index.js';
-process.loadEnvFile();
 
 const debugMode = process.env.DEBUG_MODE || false;
 
