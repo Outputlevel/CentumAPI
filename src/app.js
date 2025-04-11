@@ -1,5 +1,6 @@
 import express from "express";
 import {auth} from "./middleware/auth.js";
+import 'dotenv/config.js';
 
 import customerRouter from "./endpoints/customer.js";
 import orderRouter from "./endpoints/order.js";
