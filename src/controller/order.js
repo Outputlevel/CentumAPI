@@ -1,7 +1,8 @@
 import {OrderService} from '../service/orderService.js';
 import {OrderSchema} from '../schemas/orderSchema.js';
+import { DEV_MODE } from '../utils/config.js';
 
-const devMode = process.env.DEV_MODE || false;
+const devMode = DEV_MODE || false;
 
 class OrderController{
     constructor() {

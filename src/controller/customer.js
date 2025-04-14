@@ -1,7 +1,8 @@
 import { CustomerService } from '../service/customerService.js';
 import { CustomerSchema } from '../schemas/index.js';
+import { DEBUG_MODE } from '../utils/config.js';
 
-const debugMode = process.env.DEBUG_MODE || "true";
+const debugMode = DEBUG_MODE || "true";
 
 class CustomerController {
     constructor() {

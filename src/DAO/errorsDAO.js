@@ -1,9 +1,10 @@
 import { HTTPWorker } from "../utils/httpWorker.js";
+import { DEV_MODE, WOO_USERNAME_DEV, WOO_USERNAME_PROD, WOO_AUTH_DEV, WOO_AUTH_PROD, WOO_URL } from "../utils/config.js";
 
-const devMode = process.env.DEV_MODE || "true";
+const devMode = DEV_MODE || "true";
 
-const username = devMode === "true" ? process.env.WOO_USERNAME_DEV : process.env.WOO_USERNAME_PROD;
-const appPassword = devMode === "true" ? process.env.WOO_AUTH_DEV : process.env.WOO_AUTH_PROD;
+const username = devMode === "true" ? WOO_USERNAME_DEV : WOO_USERNAME_PROD;
+const appPassword = devMode === "true" ? WOO_AUTH_DEV : WOO_AUTH_PROD;
 const token = Buffer.from(`${username}:${appPassword}`).toString('base64');
 //Woo headers
 const wooAuth = { Authorization: `Basic ${token}==` };
@@ -11,7 +12,7 @@ const wooAuth = { Authorization: `Basic ${token}==` };
 
 class ErrorsDAO {
     constructor() {
-        this.url = `${process.env.WOO_URL}`;
+        this.url = `${WOO_URL}`;
         this.customerErrorRoute = `${this.url}/customer-failed-requests/`;
         this.customerRoute = `${this.url}/customers/`;
         this.orderErrorRoute = `${this.url}/order-failed-requests/`;

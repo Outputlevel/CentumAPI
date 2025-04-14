@@ -1,5 +1,6 @@
 import crypto from 'crypto';
 import { v4 as uuidv4 } from 'uuid';
+import { PUBLIC_KEY, CONSUMER_ID_VALUE } from './config.js';
 
 export class HTTPWorker {
     constructor({ url, method = 'GET', body = null, extraHeaders = {} }) {
@@ -20,7 +21,7 @@ export class HTTPWorker {
         const guid = uuidv4().replace(/-/g, '').toLowerCase();
         const now = new Date();
         const utcTime = now.toISOString().split('.')[0];
-        const publicKey = process.env.PUBLIC_KEY;
+        const publicKey = PUBLIC_KEY;
         const hashInput = `${utcTime} ${guid} ${publicKey}`;
         const hash = crypto.createHash('sha1').update(hashInput).digest('hex').toUpperCase();
         return `${utcTime} ${guid} ${hash}`;
@@ -32,7 +33,7 @@ export class HTTPWorker {
         }
 
         const token = await this.#keyGenerator();
-        const consumerId = process.env.CONSUMER_ID_VALUE;
+        const consumerId = CONSUMER_ID_VALUE;
         this.setHeaders({
             "CentumSuiteConsumidorApiPublicaId": consumerId,
             "CentumSuiteAccessToken": token

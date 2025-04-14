@@ -73,8 +73,8 @@ class CustomerSchema{
           Latitud: null,
           Longitud: null,
           //shipping
-          DireccionEntrega: body.shipping.address + " " + body.shipping.address_2 ?? null,
-          CalleEntrega: body.shipping.address + " " + body.shipping.address_2 ?? null,
+          DireccionEntrega: null,//body.shipping.address + " " + body.shipping.address_2 ?? null,
+          CalleEntrega: null, //body.shipping.address + " " + body.shipping.address_2 ?? null,
           NumeroCalleEntrega: null,
           LocalEntrega: body.shipping.company_name ?? null,
           CallePerpendicular1Entrega: null,

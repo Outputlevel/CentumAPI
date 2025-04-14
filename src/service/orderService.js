@@ -1,8 +1,9 @@
 import {CentumDAO} from '../DAO/centumDAO.js';
 import { ErrorService } from './index.js';
 import {OrderSchema} from '../schemas/index.js';
+import { DEBUG_MODE } from '../utils/config.js';
 
-const debugMode = process.env.DEBUG_MODE || false;
+const debugMode = DEBUG_MODE || false;
 
 class OrderService {
     constructor() {

@@ -1,6 +1,6 @@
 import express from "express";
 import {auth} from "./middleware/auth.js";
-import 'dotenv/config.js';
+import { PORT, AUTH_HEADER } from "./utils/config.js";
 
 import customerRouter from "./endpoints/customer.js";
 import orderRouter from "./endpoints/order.js";
@@ -8,7 +8,7 @@ import errorRouter from "./endpoints/errors.js";
 
 const app = express();
 
-const port = process.env.PORT || 3000;
+const port = PORT || 3000;
 
 app.use(auth);
 app.use(express.json());

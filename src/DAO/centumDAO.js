@@ -1,11 +1,12 @@
 import { HTTPWorker } from "../utils/httpWorker.js";
 import { getFirstKeyValue } from "../utils/helpers.js";
+import { API_URL } from "../utils/config.js";
 
 export class CentumDAO {
     constructor() {
-        this.url = `${process.env.API_URL}`;
-        this.url_clientes = `${process.env.API_URL}/Clientes`;
-        this.url_orders = `${process.env.API_URL}/PedidosVenta`;
+        this.url = `${API_URL}`;
+        this.url_clientes = `${API_URL}/Clientes`;
+        this.url_orders = `${API_URL}/PedidosVenta`;
     }
     async getOrders() {
         const http = new HTTPWorker({url: this.url_orders, method:'GET'});
