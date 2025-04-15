@@ -32,7 +32,8 @@ class OrderService {
 
                 return {
                     status: 500,
-                    message: "Internal Server Error. Order saved in Woo"
+                    message: "Internal Server Error. Order saved in Woo",
+                    payload: data,
                 };
             }
             return data;
