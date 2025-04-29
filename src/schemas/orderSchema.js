@@ -510,9 +510,9 @@ export class OrderSchema                     {
             Nota: "",
             ObservacionesInternas: "",
             CondicionVenta: {
-              IdCondicionVenta: 15,
-              Codigo: "VTA8",
-              Nombre: "Cuenta Corriente 30 dias"
+              IdCondicionVenta: 21,
+              /* Codigo: "VTA8",
+              Nombre: "Cuenta Corriente 30 dias" */
             },
             //Ver funcion
             FormaPagoCliente: {
