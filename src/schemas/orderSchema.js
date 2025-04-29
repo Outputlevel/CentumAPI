@@ -510,7 +510,7 @@ export class OrderSchema                     {
             Nota: "",
             ObservacionesInternas: "",
             CondicionVenta: {
-              IdCondicionVenta: 21, "Anticipado tienda online"
+              IdCondicionVenta: 21, //"Anticipado tienda online"
               /* Codigo: "VTA8",
               Nombre: "Cuenta Corriente 30 dias" */
             },
