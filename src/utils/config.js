@@ -14,7 +14,8 @@ export const {
     CONSUMER_ID_HEADER,
     CONSUMER_ID_VALUE,
     API_URL,
-    WOO_URL,
+    WOO_URL_DEV,
+    WOO_URL_PROD,
 } = process.env;
 
 

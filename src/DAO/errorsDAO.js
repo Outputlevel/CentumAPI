@@ -1,8 +1,9 @@
 import { HTTPWorker } from "../utils/httpWorker.js";
-import { DEV_MODE, WOO_USERNAME_DEV, WOO_USERNAME_PROD, WOO_AUTH_DEV, WOO_AUTH_PROD, WOO_URL } from "../utils/config.js";
+import { DEV_MODE, WOO_USERNAME_DEV, WOO_USERNAME_PROD, WOO_AUTH_DEV, WOO_AUTH_PROD, WOO_URL_DEV, WOO_URL_PROD } from "../utils/config.js";
 
 const devMode = DEV_MODE || "true";
 
+const wooUrl = devMode === "true" ? WOO_URL_DEV : WOO_URL_PROD;
 const username = devMode === "true" ? WOO_USERNAME_DEV : WOO_USERNAME_PROD;
 const appPassword = devMode === "true" ? WOO_AUTH_DEV : WOO_AUTH_PROD;
 const token = Buffer.from(`${username}:${appPassword}`).toString('base64');
@@ -12,7 +13,7 @@ const wooAuth = { Authorization: `Basic ${token}==` };
 
 class ErrorsDAO {
     constructor() {
-        this.url = `${WOO_URL}`;
+        this.url = `${wooUrl}`;
         this.customerErrorRoute = `${this.url}/customer-failed-requests/`;
         this.customerRoute = `${this.url}/customers/`;
         this.orderErrorRoute = `${this.url}/order-failed-requests/`;
@@ -27,6 +28,7 @@ class ErrorsDAO {
                 body,
                 extraHeaders: wooAuth,
             });
+            console.log(`Making ${method} request to ${url}`);
             return await http.init();
         } catch (error) {
             console.error(`Error with ${method} request to ${url}:`, error);

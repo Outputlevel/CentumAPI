@@ -5,6 +5,7 @@ import { PORT, AUTH_HEADER } from "./utils/config.js";
 import customerRouter from "./endpoints/customer.js";
 import orderRouter from "./endpoints/order.js";
 import errorRouter from "./endpoints/errors.js";
+import { ErrorService } from "./service/errorService.js";
 
 const app = express();
 

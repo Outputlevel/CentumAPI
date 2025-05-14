@@ -40,15 +40,10 @@ export class CustomerService{
         return data;
     }
 
-    isCustomerRegistered = async (cuit) => {
-        try {
-            const data = await this.centumDAO.getCustomerByCuit(cuit);
-            if (!data?.payload?.Items?.length) return false;
-            return true;
-        } catch (error) {
-            console.error("API Error: ", error);
-            return null; // Indicating API failure
-        }
+    isCustomerRegistered = async (customerCentumData) => {
+        const data = customerCentumData;
+        if (!data?.payload?.Items?.length) return false;
+        return true;
     };
     createCustomer = async (reqBody, schemaSet = false) => {
         try {
