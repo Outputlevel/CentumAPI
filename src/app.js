@@ -23,6 +23,10 @@ app.use("/api/errors", errorRouter);
 app.get("/", (req, res) => {
     res.status(403).send("Forbidden");
 });
+app.get("/hello", (req, res) => {
+
+    res.status(200).send("Hello World");
+});
 
 app.listen(port, () => {
     console.log(`Server is running on Port: ${port}`);

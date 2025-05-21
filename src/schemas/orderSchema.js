@@ -10,7 +10,7 @@ export class OrderSchema                     {
     productInfo = async (product) => {
       const res = await this.productService.getArticuloByCode(product);
       //
-      console.log(res)
+      //console.log(res)
       return res.payload;
     }
     orderSchema = () => {
