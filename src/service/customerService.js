@@ -34,10 +34,10 @@ export class CustomerService{
     }
     //returns ID
     getCustomerIdByCuit = async (cuit) => {
-        const data = await this.centumDAO.getCustomerIdByCuit(cuit);
-        //if(data.length === 0 || data === null) return null;
-        //console.log({ID: data.payload.Items[0].IdCliente});
-        return data;
+        const data = await this.centumDAO.getCustomerByCuit(cuit);
+        if(data.payload.Items.length === 0) return [];
+        return data?.payload.Items[0].IdCliente;
+    
     }
 
     isCustomerRegistered = async (customerCentumData) => {
@@ -85,12 +85,17 @@ export class CustomerService{
             //response = {status: 500}; // Simulate a response for testing
             // Handle critical error
             if (!response || response.status >= 500) {
-                const errorService = new ErrorService();
+                /* const errorService = new ErrorService();
                 await errorService.postCustomerError({
                     customer_id: centumSchema.woo_customer_id,
                     json_data: centumSchema,
                     status: 'pending'
-                });
+                }); */
+                return {
+                    status: 500,
+                    message: "Internal Server Error in Centum.",
+                    payload: data,
+                };
             }
             return response;
         } catch (error) {

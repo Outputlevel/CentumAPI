@@ -26,6 +26,10 @@ export class HTTPWorker {
         const hash = crypto.createHash('sha1').update(hashInput).digest('hex').toUpperCase();
         return `${utcTime} ${guid} ${hash}`;
     }
+    async getKey(){
+        const key = await this.#keyGenerator();
+        return key;
+    }
 
     async init() {
         if (!this.url) {
@@ -54,4 +58,11 @@ export class HTTPWorker {
             return null;
         }
     }
+}
+
+export async function showApiKey(){
+    const http = new HTTPWorker({url: 'https://api.centumsuite.com/centum/api/v1/Clientes', method:'GET'});
+    const keys = await http.getKey();
+    console.log(keys);
+    return keys;
 }

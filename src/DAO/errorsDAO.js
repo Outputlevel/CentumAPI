@@ -28,7 +28,7 @@ class ErrorsDAO {
                 body,
                 extraHeaders: wooAuth,
             });
-            console.log(`Making ${method} request to ${url}`);
+            //console.log(`Making ${method} request to ${url}`);
             return await http.init();
         } catch (error) {
             console.error(`Error with ${method} request to ${url}:`, error);

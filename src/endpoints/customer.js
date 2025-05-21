@@ -7,4 +7,6 @@ const router = Router();
 
 router.post("/", isCustomer, cc.createCustomer);
 
+router.get("/cuit", cc.getCustomerByCuit);
+
 export default router;

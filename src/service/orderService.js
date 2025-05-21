@@ -22,17 +22,17 @@ class OrderService {
             const data = await this.centumDAO.createOrder(centumSchema);
             
             // Handle API failure
-            if (data.status > 500 ) {
-                const errorService = new ErrorService();
+            if (!data || data.status >= 500 ) {
+                /* const errorService = new ErrorService();
                 await errorService.postOrderError({
                     order_id: centumSchema.woo_order_id,
                     json_data: centumSchema,
                     status: 'pending'
-                });
+                }); */
 
                 return {
                     status: 500,
-                    message: "Internal Server Error. Order saved in Woo",
+                    message: "Internal Server Error in Centum.",
                     payload: data,
                 };
             }

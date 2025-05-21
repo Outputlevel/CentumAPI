@@ -1,5 +1,6 @@
 import {OrderService} from '../service/orderService.js';
 import {OrderSchema} from '../schemas/orderSchema.js';
+import {ErrorService} from '../service/errorService.js';
 import { DEV_MODE } from '../utils/config.js';
 
 const devMode = DEV_MODE || false;
@@ -38,13 +39,13 @@ class OrderController{
                 order_id: body.order_id,
                 order_id_centum: IdPedidoVenta,
             };
-
-            this.errorService.postOrderWoo(wooBody).catch(err => {
+            const ES = new ErrorService();
+            ES.postOrderWoo(wooBody).catch(err => {
                 console.error("Failed to sync order with WooCommerce:", err);
             });
             return; // Stop further execution            
         }
-    } 
+    }
 }
 
 export { OrderController };

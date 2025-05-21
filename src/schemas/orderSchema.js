@@ -10,29 +10,30 @@ export class OrderSchema                     {
     productInfo = async (product) => {
       const res = await this.productService.getArticuloByCode(product);
       //
-      // console.log(res.payload)
+      console.log(res)
       return res.payload;
     }
     orderSchema = () => {
         const body = this.body;
+        //console.log("Order Schema: ", body);
         return {
             order_id: Number(body.order_id),
             customer_id: Number(body.customer_id),
             cuit: String(body.billing_cuit),
             payment_method: String(body.payment_method),
-            items: body.items.map(item => ({
-                product_id: String(item.product_id),
-                name: String(item.name),
-                sku: String(item.sku),
-                weight: Number(item.weight),
-                price: Number(item.price),
-                quantity: Number(item.quantity),
-                subtotal: Number(item.subtotal),
-                total: Number(item.total),
-                discounts: Array.isArray(item.discounts) 
-                    ? item.discounts.map(discount => Number(discount)) 
-                    : [], // Ensures discounts are numbers or defaults to an empty array
-            })),
+            items: (body.items ?? []).map(item => ({
+            product_id: String(item.product_id),
+            name: String(item.name),
+            sku: String(item.sku),
+            weight: Number(item.weight),
+            price: Number(item.price),
+            quantity: Number(item.quantity),
+            subtotal: Number(item.subtotal),
+            total: Number(item.total),
+            discounts: Array.isArray(item.discounts) 
+                ? item.discounts.map(discount => Number(discount)) 
+                : [], // Ensures discounts are numbers or defaults to an empty array
+        })),
             //meta_data: [], // Uncomment if needed
         };
     }

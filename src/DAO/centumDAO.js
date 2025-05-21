@@ -48,11 +48,12 @@ export class CentumDAO {
         const data = await http.init();
         return data;
     }
-    async getCustomerIdByCuit(cuit) {
+    /* async getCustomerIdByCuit(cuit) {
         const http = new HTTPWorker({url: `${this.url_clientes}/?Cuit=${cuit}`, method:'GET'});
         const data = await http.init();
+        console.log(data);
         return data.payload.Items[0].IdCliente;
-    }
+    } */
     //Post
     async createCustomer(customer) {
         const http = new HTTPWorker({url: this.url_clientes, method:'POST', body: customer});

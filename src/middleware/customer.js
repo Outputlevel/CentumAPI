@@ -17,8 +17,8 @@ export const isCustomer = async (req, res, next) => {
     if (isRegistered) {
         res.status(409).json({ status: 409, message: "Customer already exists, syncing with Woo" });
 
-        // Fire and forget Woo sync
         const { IdCliente, Codigo } = customerData.payload.Items[0];
+        // Fire and forget Woo sync
         const wooBody = {
             customer_id: req.body.woo_customer_id,
             customer_id_centum: IdCliente,

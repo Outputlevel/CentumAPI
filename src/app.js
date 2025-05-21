@@ -6,6 +6,7 @@ import customerRouter from "./endpoints/customer.js";
 import orderRouter from "./endpoints/order.js";
 import errorRouter from "./endpoints/errors.js";
 import { ErrorService } from "./service/errorService.js";
+import { showApiKey } from "./utils/httpWorker.js";
 
 const app = express();
 
@@ -27,3 +28,5 @@ app.listen(port, () => {
     console.log(`Server is running on Port: ${port}`);
     }
 );
+
+await showApiKey();

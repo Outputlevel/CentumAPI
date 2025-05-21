@@ -10,6 +10,19 @@ class CustomerController {
         this.customerService = new CustomerService();
         this.errorService = new ErrorService();
     }
+    getCustomerByCuit = async(req, res) => {
+        const cuit = "30717293432";
+        if (!cuit) return res.status(400).send({status:400, message: "Cuit is empty"});
+        const data = await this.customerService.getCustomerIdByCuit(cuit);
+        if (data.status === 500) {
+            return res.status(500).send(data);
+        }
+        if (data.status === 200) {
+            res.status(200).send(data);
+            return;
+        }
+    } 
+
     createCustomer = async (req, res) => {
         try {
             const body = req.body;   //From middleware 
