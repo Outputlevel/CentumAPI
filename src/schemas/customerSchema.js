@@ -76,11 +76,11 @@ class CustomerSchema{
           DireccionEntrega: null,//body.shipping.address + " " + body.shipping.address_2 ?? null,
           CalleEntrega: null, //body.shipping.address + " " + body.shipping.address_2 ?? null,
           NumeroCalleEntrega: null,
-          LocalEntrega: body.shipping.company_name ?? null,
+          LocalEntrega: null, //body.shipping.company_name ?? null,
           CallePerpendicular1Entrega: null,
           CallePerpendicular2Entrega: null,
-          LocalidadEntrega: body.shipping.city ?? null,
-          CodigoPostalEntrega: body.shipping.postcode ?? null,
+          LocalidadEntrega: null, //body.shipping.city ?? null,
+          CodigoPostalEntrega: null, //body.shipping.postcode ?? null,
           DepartamentoEntrega: {
             IdDepartamento: 7015
           },
